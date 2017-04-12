@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For Loops</title>
+</head>
+<body>
+<script>
+
+    console.log("//--- Project 1 ---//");
+
+    for (var i = 0, rN = Math.floor((Math.random() * 10) + 1); i < 11; i++) {
+        var total = rN * i;
+        console.log('Multiple of # ' + rN + '*' + i + ' = ' + total);
+    }
+
+    console.log("//--- Project 2 ---//");
+
+    for (var P = 0; P < 10; P++) {
+        var random = Math.floor((Math.random() * 200) + 20);
+        var message;
+        if (P % 2 === 0) {
+            message = "Even";
+        } else {
+            message = "Odd";
+        }
+        console.log(random + " is " + message);
+    }
+
+</script>
+</body>
+</html>

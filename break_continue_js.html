@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Break Continue</title>
+</head>
+<body>
+<script>
+
+    "use strict";
+
+    var random = Math.floor((Math.random() * 50) + 1);
+    var i = 0;
+    console.log("Break point is even ");
+    for (var odd = i % 2 === 2; i = 0; i++) {
+        console.log('Loop counter is: ' + i);
+        if (random === odd) {
+            console.log("We have reached the random stopping point: break!");
+            break;
+        }
+    }
+
+
+</script>
+</body>
+</html>

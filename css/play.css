@@ -1,0 +1,23 @@
+body{
+    background-color: #606365;
+}
+
+Div{
+    width: 120px;
+    height: auto;
+    background-color: #4CB19F;
+}
+
+#one{
+    background-color: orangered;
+    border: 2px solid white;
+}
+
+#second{
+    background-color: #FFFFFF;
+    border: 2px solid #4CB19F;
+}
+
+.borders{
+    border: 2px solid orangered;
+}

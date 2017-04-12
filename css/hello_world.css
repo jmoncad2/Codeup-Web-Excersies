@@ -1,0 +1,23 @@
+td{
+    color: yellow;
+    text-decoration: underline;
+}
+
+body{
+    background-color: #234D1D;
+}
+
+.circle{
+    width: 400px;
+    height: 500px;
+    background-image: url("../img/grass.png");
+    background-size: cover;
+}
+
+li{
+    list-style: lower-alpha;
+}
+
+.circle{
+    font-family: "Toppan Bunkyu Midashi Gothic";
+}
