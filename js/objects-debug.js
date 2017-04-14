@@ -16,10 +16,13 @@
  *   the code is meant to do
  */
 
+'use strict';
+
+
 var pizza = {
     toppings: ['pepperoni', 'green peppers', 'onions'],
     crust: 'stuffed',
-    delivery: (true)
+    delivery: true
 };
 
 // output the type of crust for the pizza
@@ -32,7 +35,7 @@ console.log(pizza.crust);
 // everything until the next comment block              //
 //////////////////////////////////////////////////////////
 
-orders = [
+var orders = [
     {
         toppings: ['pepperoni', 'green peppers', 'onions'],
         crust: 'stuffed',
@@ -55,8 +58,8 @@ orders = [
 ];
 
 console.log('Here are the different crust types for each order: ');
-orders.forEach(function(orders) {
-    console.log(orders.crust)
+orders.forEach(function(order) {
+    console.log(order.crust)
 });
 
 //////////////////////////////////////////////////////////////////////
@@ -68,12 +71,12 @@ console.log(' > Orders For Delivery');
 console.log('--------------------------------------------------');
 
 // output information about all the orders for delivery
-for (var index = 0; index <= orders.length; index += 1) {
+for (var index = 0; index < orders.length; index += 1) {
     var order = orders[index];
 
     // if an order is not for delivery, skip it
     if (! order.delivery) {
-        break;
+        continue;
     }
 
     var orderNumber = index + 1;
@@ -83,8 +86,8 @@ for (var index = 0; index <= orders.length; index += 1) {
     console.log('--- Order # ' + orderNumber + ' ---');
     console.log('Toppings');
     // output all the toppings for the order
-    order.toppings.forEach(function() {
-        console.log('- ' + order.toppings);
+    order.toppings.forEach(function(topping) {
+        console.log('- ' + topping);
     });
 
     console.log('Crust: ' + order.crust);
