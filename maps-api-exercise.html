@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Maps API Test</title>
+    <style type="text/css">
+        #map-canvas {
+            width: 800px;
+            height: 300px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map-canvas"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG6cL9lcy5RkzE8vWSWp00WGpJPvCJ66g"></script>
+<script type="text/javascript">
+    (function () {
+        "use strict";
+
+        var mapOptions = {
+            zoom: 15,
+
+            center: {
+                lat: 29.426602,
+                lng: -98.489449
+            }
+        };
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+    })();
+
+
+</script>
+</body>
+</html>
