@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Maps API 2</title>
+    <style type="text/css">
+
+        body {
+            font-family: sans-serif;
+            background: slategrey;
+        }
+
+        #map-canvas {
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            border-radius: 4px;
+        }
+
+        #search {
+            width: 550px;
+            height: 50px;
+            margin-left: 350px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 600;
+            background-color: transparent;
+            border-radius: 4px;
+        }
+
+        #search::placeholder {
+            color: darkgoldenrod;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 5px;
+            padding: 0;
+            margin-top: 0;
+        }
+
+        #updateBars {
+            margin-left: 300px;
+            margin-bottom: 10px;
+        }
+
+        .inputBars {
+            border-radius: 8px;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>Google Maps API</h1>
+<input id="search" type="text" placeholder="Search Here"><br>
+<div id="updateBars">
+    <label for="lat">Latitude</label>
+    <input class="inputBars" type="text" id="lat" value="29.481914">
+
+    <label for="long">Longitude</label>
+    <input class="inputBars" type="text" id="long" value="-98.524924">
+
+    <label for="zoom">Zoom Lvl</label>
+    <input class="inputBars" type="text" id="zoom" value="10">
+    <button id="updateMap">Update Map</button>
+</div>
+<div id="map-canvas"></div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG6cL9lcy5RkzE8vWSWp00WGpJPvCJ66g"></script>
+<script type="application/javascript">
+    (function () {
+        "use strict";
+
+        var zoom = document.getElementById('zoom');
+        var lat = document.getElementById('lat');
+        var long = document.getElementById('long');
+        var geocoder = new google.maps.Geocoder;
+        var updateMap = document.getElementById('updateMap');
+        var mapOptions = {
+            zoom: 14,
+            center: {
+                lat: 29.417039,
+                lng: -98.478793
+            }
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        function updateButton() {
+                var updateLat = parseFloat(lat.value);
+                var updateLong = parseFloat(long.value);
+        }
+
+
+        updateMap.addEventListener("click", updateButton);
+
+
+
+
+    })();
+</script>
+
+</body>
+</html>
