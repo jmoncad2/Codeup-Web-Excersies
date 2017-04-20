@@ -10,10 +10,9 @@
 <p class="machineOath" id="machineWay">Today you will learn about the ghost in the machine....</p>
 <div class="lawDiv" id="genisisLaw">
     <ul class="lawtUl" id="firstLawUl">
-        <li class="machineLaws" id="lawOne"></li>
-        <li class="machineLaws" id="lawTwo"></li>
-        <li class="machineLaws" id="lawThree"></li>
-        <li class="machineLaws" id="lawFour"></li>
+        <li class="machineLaws" id="lawOne">A robot may not injure a human being or, through inaction, allow a human being to come to harm.</li>
+        <li class="machineLaws" id="lawTwo">A robot must obey orders given it by human beings except where such orders would conflict with the First Law.</li>
+        <li class="machineLaws" id="lawThree">A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.</li>
     </ul>
 </div>
 
@@ -23,6 +22,9 @@
 
 <script>
     $(document).ready(function () {
+
+        var idContent = $('#lawTwo').html();
+        alert(idContent);
 
 
     })
