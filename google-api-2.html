@@ -57,13 +57,15 @@
 <input id="search" type="text" placeholder="Search Here"><br>
 <div id="updateBars">
     <label for="lat">Latitude</label>
-    <input class="inputBars" type="text" id="lat" value="29.481914">
+    <input class="inputBars" type="text" id="lat" value="29.426791">
 
     <label for="long">Longitude</label>
-    <input class="inputBars" type="text" id="long" value="-98.524924">
+    <input class="inputBars" type="text" id="long" value="-98.489602">
 
-    <label for="zoom">Zoom Lvl</label>
-    <input class="inputBars" type="text" id="zoom" value="10">
+    <label for="zoomIn">Zoom</label>
+    <button value=1 id="zoomIn">+</button>
+    <button value=-1 id="zoomOut">-</button>
+
     <button id="updateMap">Update Map</button>
 </div>
 <div id="map-canvas"></div>
@@ -74,30 +76,55 @@
     (function () {
         "use strict";
 
-        var zoom = document.getElementById('zoom');
         var lat = document.getElementById('lat');
         var long = document.getElementById('long');
         var geocoder = new google.maps.Geocoder;
         var updateMap = document.getElementById('updateMap');
-        var mapOptions = {
-            zoom: 14,
-            center: {
-                lat: 29.417039,
-                lng: -98.478793
-            }
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        var startPoint = {lat: 29.426791, lng: -98.489602};
+        var zoomVar = 10;
+        var zoomIn = document.getElementById('zoomIn');
+        var zoomOut = document.getElementById('zoomOut');
+        var map;
 
         function updateButton() {
-                var updateLat = parseFloat(lat.value);
-                var updateLong = parseFloat(long.value);
+            var updateLat = parseFloat(lat.value);
+            var updateLong = parseFloat(long.value);
+            changeMapOptions(10, updateLat, updateLong)
         }
 
+        function zoomUp() {
+            zoomVar ++;
+            map.setZoom(zoomVar);
+        }
 
+        function zoomDown() {
+            zoomVar -=1;
+            map.setZoom(zoomVar);
+        }
+
+        function changeMapOptions(zoomLvl, latLvl, lngLvl) {
+            var mapOptions = {
+                zoom: zoomLvl,
+                center: {
+                    lat: parseFloat(latLvl),
+                    lng: parseFloat(lngLvl)
+                },
+
+                disableDefaultUI: true
+            };
+
+             map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: startPoint,
+                map: map
+            })
+
+        }
+        zoomOut.addEventListener("click", zoomDown);
+        zoomIn.addEventListener("click", zoomUp);
+        changeMapOptions(zoomVar, lat.value, long.value);
         updateMap.addEventListener("click", updateButton);
-
-
-
 
     })();
 </script>
