@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Konami Code</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 681px;
+            width: 1280px;
+        }
+
+        #sun {
+            background: url("img/sun.png");
+            width: 300px;
+            height: 300px;
+            position: relative;
+            float: right;
+            border: 4px solid orange;
+            border-radius: 200px;
+        }
+
+        #horseField {
+            width: 100%;
+            height: 100%;
+            background: url("img/Horse-Field.jpg");
+        }
+
+        #title {
+            position: absolute;
+            float: left;
+            font-size: 5em;
+            margin-left: 37%;
+            margin-top: 0;
+            font-family: sans-serif;
+            color: deeppink;
+        }
+
+        @-webkit-keyframes rotating {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        .rotating {
+            -webkit-animation: rotating 2s linear infinite;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1 id="title">Welcome</h1>
+<audio id="sunnyDay" loop="loop"></audio>
+<div id="horseField">
+    <img class="rotating" id="sun">
+</div>
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        'use strict';
+
+
+        var konamiKeys = [], konami = '38,38,40,40,37,39,37,39,66,65';
+
+        $(document).keydown(function kCode(e) {
+            konamiKeys.push(e.keyCode);
+            if (konamiKeys.toString().indexOf(konami) >= 0) {
+                $(document).unbind('keydown', arguments.kCode);
+                $.getScript('http://www.cornify.com/js/cornify.js', function kCode() {
+                    cornify_add();
+                    $(document).keydown(cornify_add);
+
+                });
+            }
+        });
+
+
+    })
+
+
+</script>
+
+</body>
+</html>
