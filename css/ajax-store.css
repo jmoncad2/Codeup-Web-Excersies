@@ -1,0 +1,33 @@
+body {
+    background: #454545;
+    color: #9DCBBA;
+}
+
+#products {
+    border: 1px solid #6D5959;
+    border-radius: 4px;
+}
+
+td, tr, th {
+    border: 1px solid #6D5959;
+    border-radius: 4px;
+}
+
+td {
+    padding: 10px;
+}
+
+#refreshBtn {
+    border-radius: 4px;
+    font-size: 26px;
+    margin-top: 5px;
+    margin-left: 37%;
+}
+
+#tableWrapper {
+    margin-left: 34%;
+}
+
+h1 {
+    text-align: center;
+}
