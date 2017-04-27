@@ -1,0 +1,13 @@
+body {
+    color: wheat;
+}
+#navBar {
+    position: static;
+    background-color: black;
+    width: 15%;
+    height: 7%;
+}
+
+.menuItems {
+    font-size: 1.5em;
+}

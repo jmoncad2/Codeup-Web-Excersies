@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Exercise</title>
+    <style>
+        body {
+            background: #86BA90;
+            color: #DF2935;
+            font-size: 1.2em;
+            font-family: sans-serif;
+        }
+
+        #map-canvas {
+            width: 1000px;
+            height: 460px;
+            margin-left: 130px;
+            margin-top: 10px;
+            border-radius: 8px;
+
+        }
+
+        .castBoxes {
+            width: 300px;
+            height: 200px;
+            border-radius: 8px;
+            background: #F5F3BB;
+            display: inline-block;
+            text-align: center;
+        }
+
+        #castWrapper {
+            margin-left: 175px;
+        }
+
+        #cityName {
+            font-size: 35px;
+            margin-left: 175px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        #webName {
+            text-align: center;
+            font-size: 55px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="webName">Weather Application</div>
+<div id="cityName"></div>
+<div id="castWrapper">
+    <div id="castBox1" class="castBoxes"></div>
+    <div id="castBox2" class="castBoxes"></div>
+    <div id="castBox3" class="castBoxes"></div>
+</div>
+
+<div id="map-canvas"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG6cL9lcy5RkzE8vWSWp00WGpJPvCJ66g"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    "use strict";
+
+    var map;
+
+
+    $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+        APPID: "9d33eb0ddfaf3f69fcfe9737400c7e05",
+        id:     4171771,
+        units: "imperial"
+    }).done(function (data) {
+        displayData(data);
+        dataBox1(data);
+        dataBox2(data);
+        dataBox3(data);
+        console.log(data);
+    });
+
+
+    function displayData(data) {
+        var cityContent = "";
+        var countryContent = "";
+        countryContent = data.city.country;
+        cityContent = data.city.name;
+        $("#cityName").html(cityContent + ", " + countryContent);
+    }
+
+    function dataBox1(dataBox1) {
+        var box1MaxTemp = "";
+        var box1MinTemp = "";
+        var box1Forecast = "";
+        var box1Temp = "";
+        var box1Humidity = "";
+        box1MaxTemp = dataBox1.list[0].temp.max;
+        box1MinTemp = dataBox1.list[0].temp.min;
+        box1Forecast = dataBox1.list[0].weather[0].description;
+        box1Temp = dataBox1.list[0].temp.day;
+        box1Humidity = dataBox1.list[0].humidity;
+        $("#castBox1").html("<strong>" + box1MaxTemp + "/" + box1MinTemp + "</strong>" + "<br>" +
+                            "Forecast: " + box1Forecast + "<br>" +
+                            "Avg Temp: " + box1Temp + "<br>" +
+                            "Humidity: " + box1Humidity);
+    }
+
+    function dataBox2(dataBox2) {
+        var box2MaxTemp = "";
+        var box2MinTemp = "";
+        var box2Forecast = "";
+        var box2Temp = "";
+        var box2Humidity = "";
+        box2MaxTemp = dataBox2.list[1].temp.max;
+        box2MinTemp = dataBox2.list[1].temp.min;
+        box2Forecast = dataBox2.list[1].weather[0].description;
+        box2Temp = dataBox2.list[1].temp.day;
+        box2Humidity = dataBox2.list[1].humidity;
+        $("#castBox2").html("<strong>" + box2MaxTemp + "/" + box2MinTemp + "</strong>" + "<br>" +
+                            "Forecast: " + box2Forecast + "<br>" +
+                            "Avg Temp: " + box2Temp + "<br>" +
+                            "Humidity: " + box2Humidity);
+    }
+
+    function dataBox3(dataBox3) {
+        var box3MaxTemp = "";
+        var box3MinTemp = "";
+        var box3Forecast = "";
+        var box3Temp = "";
+        var box3Humidity = "";
+        box3MaxTemp = dataBox3.list[2].temp.max;
+        box3MinTemp = dataBox3.list[2].temp.min;
+        box3Forecast = dataBox3.list[2].weather[0].description;
+        box3Temp = dataBox3.list[2].temp.day;
+        box3Humidity = dataBox3.list[2].humidity;
+        $("#castBox3").html("<strong>" + box3MaxTemp + "/" + box3MinTemp + "</strong>" + "<br>" +
+                            "Forecast: " + box3Forecast + "<br>" +
+                            "Avg Temp: " + box3Temp + "<br>" +
+                            "Humidity: " + box3Humidity);
+    }
+
+
+    var mapOptions = {
+        zoom: 10,
+
+        center: {
+            lat: 29.426602,
+            lng: -98.489449
+        }
+    };
+
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+
+});
+
+
+
+
+
+</script>
+</body>
+</html>
