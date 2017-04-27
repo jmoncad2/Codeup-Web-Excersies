@@ -22,11 +22,12 @@
 
         .castBoxes {
             width: 300px;
-            height: 200px;
+            height: 150px;
             border-radius: 8px;
             background: #F5F3BB;
             display: inline-block;
             text-align: center;
+            vertical-align: middle;
         }
 
         #castWrapper {
@@ -91,51 +92,63 @@ $(document).ready(function () {
     function dataBox1(dataBox1) {
         var box1MaxTemp = "";
         var box1MinTemp = "";
+        var box1Img = "";
         var box1Forecast = "";
-        var box1Temp = "";
+        var box1AvgTemp = "";
         var box1Humidity = "";
         box1MaxTemp = dataBox1.list[0].temp.max;
         box1MinTemp = dataBox1.list[0].temp.min;
+        box1Img = dataBox1.list[0].weather[0].icon;
         box1Forecast = dataBox1.list[0].weather[0].description;
-        box1Temp = dataBox1.list[0].temp.day;
+        box1AvgTemp = dataBox1.list[0].temp.day;
         box1Humidity = dataBox1.list[0].humidity;
         $("#castBox1").html("<strong>" + box1MaxTemp + "/" + box1MinTemp + "</strong>" + "<br>" +
+                            "<img src='http://openweathermap.org/img/w/" + box1Img + ".png'>"
+                            + "<br>" +
                             "Forecast: " + box1Forecast + "<br>" +
-                            "Avg Temp: " + box1Temp + "<br>" +
+                            "Avg Temp: " + box1AvgTemp + "<br>" +
                             "Humidity: " + box1Humidity);
     }
 
     function dataBox2(dataBox2) {
         var box2MaxTemp = "";
         var box2MinTemp = "";
+        var box2Img = "";
         var box2Forecast = "";
-        var box2Temp = "";
+        var box2AvgTemp = "";
         var box2Humidity = "";
         box2MaxTemp = dataBox2.list[1].temp.max;
         box2MinTemp = dataBox2.list[1].temp.min;
+        box2Img = dataBox2.list[1].weather[0].icon;
         box2Forecast = dataBox2.list[1].weather[0].description;
-        box2Temp = dataBox2.list[1].temp.day;
+        box2AvgTemp = dataBox2.list[1].temp.day;
         box2Humidity = dataBox2.list[1].humidity;
         $("#castBox2").html("<strong>" + box2MaxTemp + "/" + box2MinTemp + "</strong>" + "<br>" +
+                            "<img src='http://openweathermap.org/img/w/" + box2Img + ".png'>"
+                            + "<br>" +
                             "Forecast: " + box2Forecast + "<br>" +
-                            "Avg Temp: " + box2Temp + "<br>" +
+                            "Avg Temp: " + box2AvgTemp + "<br>" +
                             "Humidity: " + box2Humidity);
     }
 
     function dataBox3(dataBox3) {
         var box3MaxTemp = "";
         var box3MinTemp = "";
+        var box3Img = "";
         var box3Forecast = "";
-        var box3Temp = "";
+        var box3AvgTemp = "";
         var box3Humidity = "";
         box3MaxTemp = dataBox3.list[2].temp.max;
         box3MinTemp = dataBox3.list[2].temp.min;
+        box3Img = dataBox3.list[2].weather[0].icon;
         box3Forecast = dataBox3.list[2].weather[0].description;
-        box3Temp = dataBox3.list[2].temp.day;
+        box3AvgTemp = dataBox3.list[2].temp.day;
         box3Humidity = dataBox3.list[2].humidity;
         $("#castBox3").html("<strong>" + box3MaxTemp + "/" + box3MinTemp + "</strong>" + "<br>" +
+                            "<img src='http://openweathermap.org/img/w/" + box3Img + ".png'>"
+                            + "<br>" +
                             "Forecast: " + box3Forecast + "<br>" +
-                            "Avg Temp: " + box3Temp + "<br>" +
+                            "Avg Temp: " + box3AvgTemp + "<br>" +
                             "Humidity: " + box3Humidity);
     }
 
