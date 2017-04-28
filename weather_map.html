@@ -30,6 +30,13 @@
             vertical-align: middle;
         }
 
+        #inputWrapper {
+            position: absolute;
+            margin-left: 670px;
+            margin-top: 13px;
+
+        }
+
         #castWrapper {
             margin-left: 175px;
         }
@@ -64,22 +71,47 @@
 <script>
 $(document).ready(function () {
     "use strict";
-
+//======= Google Map =============================================================================================
     var map;
+    var latLong = {lat: 29.4241, lng: -98.4936};
+
+    var mapOptions = {
+        zoom: 10,
+        center: latLong
+    };
 
 
-    $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
-        APPID: "9d33eb0ddfaf3f69fcfe9737400c7e05",
-        id:     4171771,
-        units: "imperial"
-    }).done(function (data) {
-        displayData(data);
-        dataBox1(data);
-        dataBox2(data);
-        dataBox3(data);
-        console.log(data);
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+    var marker = new google.maps.Marker({
+        position: latLong,
+        draggable: true,
+        map: map
     });
+//======= End of Map ============================================================================================
 
+    function infoData(lat, long, zip) {
+
+        $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+            APPID: "9d33eb0ddfaf3f69fcfe9737400c7e05",
+            lat: lat,
+            lon: long,
+            units: "imperial"
+        }).done(function (data) {
+            displayData(data);
+            dataBox1(data);
+            dataBox2(data);
+            dataBox3(data);
+            console.log(data);
+        });
+    }
+
+    google.maps.event.addListener(marker, "dragend", function () {
+        var lat = this.getPosition().lat();
+        var lng = this.getPosition().lng();
+        map.setCenter({lat: lat, lng: lng});
+        infoData(lat, lng);
+    });
 
     function displayData(data) {
         var cityContent = "";
@@ -106,7 +138,7 @@ $(document).ready(function () {
                             "<img src='http://openweathermap.org/img/w/" + box1Img + ".png'>"
                             + "<br>" +
                             "Forecast: " + box1Forecast + "<br>" +
-                            "Avg Temp: " + box1AvgTemp + "<br>" +
+                            "Current Temp: " + box1AvgTemp + "<br>" +
                             "Humidity: " + box1Humidity);
     }
 
@@ -127,7 +159,7 @@ $(document).ready(function () {
                             "<img src='http://openweathermap.org/img/w/" + box2Img + ".png'>"
                             + "<br>" +
                             "Forecast: " + box2Forecast + "<br>" +
-                            "Avg Temp: " + box2AvgTemp + "<br>" +
+                            "Current Temp: " + box2AvgTemp + "<br>" +
                             "Humidity: " + box2Humidity);
     }
 
@@ -148,21 +180,11 @@ $(document).ready(function () {
                             "<img src='http://openweathermap.org/img/w/" + box3Img + ".png'>"
                             + "<br>" +
                             "Forecast: " + box3Forecast + "<br>" +
-                            "Avg Temp: " + box3AvgTemp + "<br>" +
+                            "Current Temp: " + box3AvgTemp + "<br>" +
                             "Humidity: " + box3Humidity);
     }
 
 
-    var mapOptions = {
-        zoom: 10,
-
-        center: {
-            lat: 29.426602,
-            lng: -98.489449
-        }
-    };
-
-    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
 
 });
