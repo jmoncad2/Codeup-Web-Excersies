@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Exercise</title>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     <style>
         body {
             background: #86BA90;
@@ -30,15 +31,25 @@
             vertical-align: middle;
         }
 
-        #inputWrapper {
-            position: absolute;
-            margin-left: 670px;
-            margin-top: 13px;
-
-        }
-
         #castWrapper {
             margin-left: 175px;
+        }
+
+        #searchBox {
+            width: 250px;
+            height: 30px;
+            position: absolute;
+            margin-left: 800px;
+            border-radius: 8px;
+            font-size: 1.5em;
+        }
+
+        #searchBtn {
+            height: 30px;
+            margin-top: 5px;
+            margin-left: 1058px;
+            position: absolute;
+            border-radius: 8px;
         }
 
         #cityName {
@@ -57,6 +68,8 @@
 </head>
 <body>
 <div id="webName">Weather Application</div>
+<input id="searchBox" type="text">
+<button id="searchBtn">Search</button>
 <div id="cityName"></div>
 <div id="castWrapper">
     <div id="castBox1" class="castBoxes"></div>
@@ -120,7 +133,7 @@ $(document).ready(function () {
         cityContent = data.city.name;
         $("#cityName").html(cityContent + ", " + countryContent);
     }
-
+//============ 3 Day Forecast Boxes ==============================================================================
     function dataBox1(dataBox1) {
         var box1MaxTemp = "";
         var box1MinTemp = "";
@@ -183,7 +196,7 @@ $(document).ready(function () {
                             "Current Temp: " + box3AvgTemp + "<br>" +
                             "Humidity: " + box3Humidity);
     }
-
+//============= End of Boxes =====================================================================================
 
 
 
